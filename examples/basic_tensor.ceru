@@ -1,0 +1,11 @@
+import "../src/tensor_f32.ceru" as tensor;
+
+value: tensor::TensorF32 = tensor::from_data(
+    array_copy([1.0f32, 2.0f32, 3.0f32, 4.0f32]),
+    array_copy([2, 2]),
+);
+
+print(value.data);
+print(value.shape);
+print(tensor::rank(value));
+print(tensor::numel(value));
