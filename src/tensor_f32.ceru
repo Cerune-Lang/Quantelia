@@ -1,0 +1,28 @@
+// Quantelia's initial f32 tensor representation.
+// This API is provisional. Shape consistency is not yet enforced.
+
+pub type TensorF32 {
+    data: [f32],
+    shape: [i64],
+}
+
+pub fn from_data(data: [f32], shape: [i64]) -> TensorF32 {
+    return TensorF32 {
+        data: data,
+        shape: shape,
+    };
+}
+
+pub fn rank(tensor: TensorF32) -> i64 {
+    return array_len(tensor.shape);
+}
+
+pub fn numel(tensor: TensorF32) -> i64 {
+    mut total: i64 = 1;
+
+    for (dimension: i64 in tensor.shape) {
+        total = total * dimension;
+    }
+
+    return total;
+}
